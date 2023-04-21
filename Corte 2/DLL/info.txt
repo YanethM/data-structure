@@ -1,0 +1,90 @@
+add_node_at_start: 
+En este método, creamos un nuevo nodo con el dato especificado. Si la lista está vacía, establecemos el nuevo nodo como la cabeza de la lista. 
+De lo contrario, establecemos el siguiente nodo del nuevo nodo como la cabeza actual de la lista (self.head), 
+establecemos el nodo anterior de la cabeza actual como el nuevo nodo y luego establecemos el nuevo nodo como la nueva cabeza de la lista.
+
+remove_node_at_start:
+verificamos si la lista está vacía. Si es así, no hacemos nada. 
+De lo contrario, establecemos la cabeza de la lista como el siguiente nodo del actual (self.head.next) y, si la cabeza no es nula, 
+establecemos el nodo anterior de la nueva cabeza como nulo.
+
+remove_node_at_end:
+verificamos si la lista está vacía o si tiene solo un nodo. 
+En estos casos, simplemente establecemos la cabeza como nula o eliminamos el único nodo de la lista. 
+Si la lista tiene más de un nodo, avanzamos a través de los nodos hasta llegar al último nodo (current.next is None). 
+Luego establecemos el siguiente nodo del nodo anterior al actual como nulo para eliminar el último nodo de la lista.
+
+get_node_at_index,:
+verificamos si la lista está vacía. Si es así, devolvemos nulo. 
+De lo contrario, avanzamos a través de los nodos hasta llegar al índice especificado (index). 
+Si el índice es mayor que la longitud de la lista, devolvemos nulo. De lo contrario, devolvemos el nodo en el índice especificado.
+
+get_node_by_value:
+verificamos si la lista está vacía. Si es así, devolvemos nulo. 
+De lo contrario, avanzamos a través de los nodos hasta encontrar un nodo cuyo valor sea igual al valor especificado (data). 
+Si no se encuentra tal nodo, devolvemos nulo. De lo contrario, devolvemos el nodo encontrado.
+
+update_node_at_index: 
+verificamos si la lista está vacía. Si es así, no hacemos nada. 
+De lo contrario, avanzamos a través de los nodos hasta llegar al índice especificado (index). 
+Si el índice es mayor que la longitud de la lista, no hacemos nada. De lo contrario, establecemos el valor del nodo en el 
+índice especificado como el valor especificado (data).
+
+update_node_by_value:
+verificamos si la lista está vacía. Si es así, no hacemos nada. 
+De lo contrario, avanzamos a través de los nodos hasta encontrar un nodo cuyo valor sea igual al valor especificado (old_data). 
+Si no se encuentra tal nodo, no hacemos nada. De lo contrario, establecemos el valor del nodo encontrado como el valor especificado (new_data).
+
+reverse:
+inicializamos dos variables, temp y current. 
+Luego, intercambiamos prev y next para todos los nodos de la lista doblemente enlazada. 
+Después de eso, verificamos si necesitamos cambiar la cabeza de la lista doblemente enlazada y actualizamos la cabeza en consecuencia.
+
+sort_asc:
+verificamos si la lista está vacía. Si es así, no hacemos nada. 
+De lo contrario, inicializamos una variable current para rastrear el nodo actual y luego iteramos a través de la lista doblemente enlazada 
+usando un bucle while anidado. En cada iteración externa, avanzamos a través de la lista usando la variable current y, en cada iteración interna, 
+avanzamos a través de la lista usando la variable next_node. En cada iteración interna, comparamos los valores del nodo actual (current.data) 
+y el siguiente nodo (next_node.data). Si el valor del nodo actual es mayor que el valor del siguiente nodo, los intercambiamos. 
+Después de que se complete el bucle, la lista doblemente enlazada estará ordenada en orden ascendente por valor.
+
+has_duplicates:
+verificamos si la lista está vacía. Si es así, devolvemos False porque no hay duplicados en una lista vacía. 
+De lo contrario, inicializamos una variable current para rastrear el nodo actual y creamos un conjunto vacío llamado values para rastrear 
+los valores que hemos visto hasta ahora. Luego, iteramos a través de la lista doblemente enlazada usando un bucle while y verificamos si el 
+valor del nodo actual (current.data) ya está en el conjunto values. Si es así, significa que hay un duplicado en la lista y devolvemos True. 
+De lo contrario, agregamos el valor del nodo actual al conjunto values y avanzamos al siguiente nodo.
+
+has_duplicates_with_information:
+En este método, usamos un diccionario en lugar de un conjunto para rastrear los valores que hemos visto hasta ahora y
+la cantidad de veces que hemos visto cada valor. También hemos agregado una variable found_duplicates para indicar si hemos encontrado algún 
+duplicado en la lista. Después de iterar a través de la lista doblemente enlazada, verificamos si hemos encontrado algún duplicado (found_duplicates). 
+Si es así, creamos una lista de los valores duplicados (duplicates) y construimos un mensaje que indica qué valores se encontraron duplicados y cuántas veces (message).
+Finalmente, imprimimos el mensaje y devolvemos True para indicar que se encontraron duplicados. Si no se encontraron duplicados, simplemente devolvemos False.
+
+has_duplicates_with_information_v2:
+En este método, usamos un diccionario para rastrear los valores que hemos visto hasta ahora y una lista para cada valor que contiene los 
+nodos que contienen ese valor. También hemos agregado una variable found_duplicates para indicar si hemos encontrado algún duplicado en la lista.
+Después de iterar a través de la lista doblemente enlazada, verificamos si hemos encontrado algún duplicado (found_duplicates). 
+Si es así, creamos un mensaje que indica qué valores se encontraron duplicados y cuántas veces aparece cada duplicado. Para cada valor en el diccionario, 
+verificamos si la lista de nodos que contienen ese valor tiene más de un elemento. Si es así, construimos una línea de mensaje que indica cuántas 
+veces aparece el valor en la lista de nodos y cuáles son los nodos que contienen el valor. Finalmente, concatenamos todas las líneas de mensaje y las imprimimos.
+Si no se encontraron duplicados, simplemente devolvemos False.
+
+add_node:
+pasamos la posición en la que queremos agregar el nodo y los datos del nuevo nodo como argumentos.
+Primero, creamos un nuevo nodo con los datos proporcionados.Luego, si la posición es 0, 
+el nuevo nodo se agrega al principio de la lista. Para hacerlo, establecemos new_node.next en 
+la cabeza actual de la lista y self.head en el nuevo nodo. Si la lista no estaba vacía, 
+establecemos el atributo prev de la cabeza actual en el nuevo nodo. Si la posición no es 0, 
+tenemos que encontrar el nodo en la posición anterior a la posición especificada. 
+Para hacerlo, recorremos la lista desde la cabeza, siguiendo el atributo next hasta que 
+alcanzamos el nodo en la posición anterior. Si no existe ese nodo, generamos un error.
+Una vez que hemos encontrado el nodo en la posición anterior, podemos agregar el nuevo nodo. 
+Establecemos new_node.next en el nodo que actualmente ocupa la posición especificada y new_node.
+prev en el nodo en la posición anterior. Si hay un nodo después del nuevo nodo, 
+establecemos el atributo prev de ese nodo en el nuevo nodo. Por último, establecemos 
+current.next en el nuevo nodo.
+
+La función time y memory_usage del paquete memory_profiler 
+para calcular la complejidad de tiempo y espacio de cada función respectivamente. 
